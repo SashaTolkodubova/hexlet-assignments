@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 class Implementations {
     public static List<Integer> right(List<Integer> elements, int count) {
+        System.out.println("list = " + elements.toString());
+        System.out.println("count = " + count);
         int length = elements.size();
         List<Integer> result = new ArrayList<>();
         if (count > length) {
