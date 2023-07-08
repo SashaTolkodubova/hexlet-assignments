@@ -24,15 +24,24 @@ class AppTest {
         result.add(3);
         assertThat(actual).isEqualTo(result);
 
+//       length = 0
         List<Integer> list1 = new ArrayList<>();
-
-        List<Integer> actual1 = App.take(list, 3);
+        List<Integer> actual1 = App.take(list1, 3);
         List<Integer> result1 = new ArrayList<>();
         assertThat(actual1).isEqualTo(result1);
 
-        List<Integer> actual2 = App.take(list, 3);
+//        length != 0 && count > length
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(1);
+        list2.add(2);
+        list2.add(3);
+        List<Integer> actual2 = App.take(list2, 3);
         List<Integer> result2 = new ArrayList<>();
+        result2.add(1);
+        result2.add(2);
         assertThat(actual2).isEqualTo(result2);
+
+//        length != 0 && count <= length
         // END
     }
 }
