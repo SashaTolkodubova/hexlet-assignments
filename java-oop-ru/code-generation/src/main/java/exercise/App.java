@@ -11,15 +11,19 @@ import java.io.FileReader;
 
 // BEGIN
 public class App {
-    @SneakyThrows
-    public static void save(Path path, Car car) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(path.toString()));
-        writer.write(car.serialize());
-        writer.close();
+    public static void save(Path path, Car car) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path.toString()));
+            writer.write(car.serialize());
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    @SneakyThrows
-    public static Car extract(Path path) throws IOException {
+    public static Car extract(Path path) {
+        Car car = null;
+        try {
         BufferedReader reader = new BufferedReader(new FileReader(path.toString()));
         StringBuilder stringBuilder = new StringBuilder();
         String line;
@@ -27,7 +31,11 @@ public class App {
             stringBuilder.append(line).append("\n");
         }
         reader.close();
-        return Car.unSerialize(stringBuilder.toString());
+        car =  Car.unSerialize(stringBuilder.toString()); }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return car;
     }
 }
 // END
