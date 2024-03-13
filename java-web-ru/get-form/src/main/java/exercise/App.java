@@ -2,15 +2,12 @@ package exercise;
 
 import io.javalin.Javalin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import exercise.model.User;
 import exercise.dto.users.UsersPage;
 
 import java.util.Collections;
-
-import org.apache.commons.lang3.StringUtils;
 
 public final class App {
 
@@ -28,7 +25,11 @@ public final class App {
             List<User> usersListResylt;
             var term = ctx.queryParam("term");
             if (term != null) {
-                usersListResylt = USERS.stream().filter(x -> x.getFirstName().toLowerCase().startsWith(term.toLowerCase())).toList();
+                usersListResylt = USERS.stream()
+                        .filter(x -> x.getFirstName()
+                                .toLowerCase()
+                                .startsWith(term.toLowerCase()))
+                        .toList();
             } else {
                 usersListResylt = null;
             }
