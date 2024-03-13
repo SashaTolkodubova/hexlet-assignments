@@ -4,9 +4,12 @@ import io.javalin.Javalin;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import exercise.model.User;
 import exercise.dto.users.UsersPage;
+
 import java.util.Collections;
+
 import org.apache.commons.lang3.StringUtils;
 
 public final class App {
@@ -29,7 +32,7 @@ public final class App {
             } else {
                 usersListResylt = null;
             }
-            var page =  new UsersPage(usersListResylt, term);
+            var page = new UsersPage(usersListResylt, term);
             ctx.render("users/index.jte", Collections.singletonMap("page", page));
         });
         // END
