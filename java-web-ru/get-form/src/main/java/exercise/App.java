@@ -31,7 +31,7 @@ public final class App {
                                 .startsWith(term.toLowerCase()))
                         .toList();
             } else {
-                usersListResylt = null;
+                usersListResylt = USERS;
             }
             var page = new UsersPage(usersListResylt, term);
             ctx.render("users/index.jte", Collections.singletonMap("page", page));
